@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restricted Table</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #74ebd5, #9face6);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 70%;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      font-size: 18px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+
+<body oncontextmenu="return false;">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Department</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Ram</td>
+      <td>21</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Prasnth</td>
+      <td>21</td>
+      <td>Finance</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Sam</td>
+      <td>21</td>
+      <td>HR</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Siva</td>
+      <td>21</td>
+      <td>Developer</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Kumar</td>
+      <td>21</td>
+      <td>Database Administrator</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Krishna</td>
+      <td>21</td>
+      <td>IT</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Arun</td>
+      <td>21</td>
+      <td>Finance</td>
+    </tr>
+  </table>
+
+  <script>
+    // Disable copy, cut, paste silently
+    document.addEventListener("copy", e => e.preventDefault());
+    document.addEventListener("cut", e => e.preventDefault());
+    document.addEventListener("paste", e => e.preventDefault());
+
+    // Block Ctrl + (A, C, V, X, P)
+    document.addEventListener("keydown", function (event) {
+      if (event.ctrlKey && ["a", "c", "v", "x", "p"].includes(event.key.toLowerCase())) {
+        event.preventDefault();
+      }
+    });
+
+    // Block Web Share API if supported
+    if (navigator.share) {
+      navigator.share = function () {
+        return Promise.reject("Sharing blocked");
+      };
+    }
+  </script>
+</body>
+
+</html>
